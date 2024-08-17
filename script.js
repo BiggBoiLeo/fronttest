@@ -118,8 +118,7 @@ document.addEventListener('DOMContentLoaded', function() {
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
-                    alert('Login successful!');
-                    window.location.href = 'index.html'; // Redirect after login
+                    alert('it worked');
                 } else {
                     alert('Login failed: ' + data.message);
                 }
