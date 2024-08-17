@@ -159,6 +159,8 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(data => {
             console.log('hello')
             loadNavbar(data.loggedIn);
+            console.log('hello2')
+
         })
         .catch(error => {
             console.error('Error fetching user status:', error);
