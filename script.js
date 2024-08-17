@@ -158,7 +158,7 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(response => response.json())
         .then(data => {
             console.log('hello');
-            console.log(data.logged);
+            console.log(data.loggedIn);
             console.log('hell3323o');
             loadNavbar(data.loggedIn);
             console.log('hello2');
