@@ -1,0 +1,961 @@
+/* General Styles */
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    width: 100%;
+    min-height: 100dvh;
+    background-color: white;
+}
+
+::selection {
+    background: #FF9900;
+    color: #052E54;
+  }
+
+button, input{
+    font-family: "Fira Sans", sans-serif;
+    font-weight: 300;
+}
+
+h1,h2, h3, h4, h5, h6{
+    font-family: "Lato", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+}
+
+p, a{
+    font-family: "Fira Sans", sans-serif;
+    font-weight: 300;
+}
+
+.container{
+    margin: auto;
+}
+
+/* Header */
+header {
+    background-color: #052E54;
+    padding: 20px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 99;
+}
+
+header .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin: 0 auto;
+    width: 90%;
+}
+
+.logo {
+    flex-shrink: 0;
+    width: auto;
+    max-width: 200px;
+}
+
+nav {
+    flex-grow: 1;
+    text-align: right;
+}
+
+/* Base styles */
+nav ul {
+    display: none; /* Always hide the original list */
+}
+
+nav .dropdown {
+    display: block; /* Always show the dropdown button */
+    position: relative;
+    text-align: right; /* Align the dropdown to the right */
+}
+
+nav .dropdown button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 15px;
+    margin-right: 20px;
+}
+
+nav .dropdown button .bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 4px auto;
+    background-color: #ffffff;
+}
+
+nav .dropdown-content {
+    background-color: #10487c;
+    display: none; /* Ensure it's hidden by default */
+    position: absolute;
+    right: 0; /* Align the dropdown content to the right */
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 100;
+    width: 20%;
+    border-radius: 5px;
+    text-align: center;
+    top: 100%; /* Position the dropdown below the button */
+}
+
+nav .dropdown-content a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+
+
+
+/* Hero Section */
+.hero {
+    width: 100%;
+    box-sizing: border-box; /* Ensure padding is included in the width */
+    position: relative;
+    height: 60vh;
+    background-image: url('images/hero-bg.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    color: white;
+    
+}
+
+.hero .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1;
+}
+
+.hero .container {
+    display: flex;
+    place-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 100%;
+    position: relative;
+    z-index: 2;
+    margin: auto;
+}
+
+.hero h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    display: inline-block;
+}
+
+.hero a{
+    text-decoration: none;
+    font-size: 36px;
+    font-family: "Lato", sans-serif;
+    color: #FF9900;
+}
+
+.hero a:hover{
+    color: #f1b65c;
+}
+
+.btn {
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+@media (max-width: 768px) {
+    .hero {
+        background-attachment: scroll;
+        height: 60vh;
+    }
+}
+
+.takeaction {
+    margin: auto;
+    text-align: center;
+    padding: 50px;
+}
+
+.takeaction .title {
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #052E54;
+}
+
+.takeaction .title h2 {
+    display: flex;
+    align-items: center;
+}
+
+.takeaction .wrapper {
+    width: 100%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    max-width: 1000px;
+    margin-top: 50px;
+}
+
+.takeaction .wrapper .info {
+    flex: 1 1 33%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.takeaction .wrapper .info h3,
+.takeaction .wrapper .info p,
+.takeaction .wrapper .info a {
+    text-align: center;
+}
+
+.takeaction .wrapper .info a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #052E54;
+    font-size: 16px;
+}
+
+.takeaction .wrapper .info .infopic {
+    width: 100%;
+    max-height: 100%;
+}
+
+.takeaction .wrapper a img {
+    max-height: 40px;
+    margin-left: 10px;
+}
+
+.takeaction .wrapper .info a:hover {
+    color: #FF9900;
+}
+
+.infopicv {
+    display: none; /* Hide variant images by default */
+}
+
+@media (max-width: 1075px) {
+
+    
+    .takeaction .wrapper {
+        flex-direction: column;
+    }
+    .infopic {
+        display: none; /* Hide original images */
+    }
+
+    .infopicv {
+        display: block; /* Show variant images */
+    }
+}
+
+@media (max-width: 768px){
+    .takeaction .title{
+        font-size: 3vw;
+    }
+}
+
+.takeaction span {
+    color: #FF9900;
+}
+
+.takeaction span:before {
+    content: ' ';
+    animation: animate infinite 8s;
+    margin-left: 6px;
+}
+
+@keyframes animate {
+    0% {
+        content: 'Secure';
+    }
+    25% {
+        content: 'Trustless';
+    }
+    50% {
+        content: 'Accessible';
+    }
+    75% {
+        content: 'Empowering';
+    }
+    100%{
+        content: 'Secure';
+    }
+}
+
+
+/* About Section */
+.about {
+    width: 100%;
+    box-sizing: border-box; /* Ensure padding is included in the width */
+    color: #052E54;
+    background-color: #f7f7f7;
+    padding-top: 30px;
+}
+
+.about .wrapped {
+    width: 60%;
+    display: flex;
+    margin: auto;
+}
+
+.about .container {
+    padding: 20px;
+    width: 100%;
+    border-radius: 10px;
+    max-width: 600px;
+}
+
+.about h1 {
+    font-size: 48px;
+    text-align: center;
+}
+
+.about h2{
+    font-size: 40px;
+}
+.about h3{
+    font-size:19px;
+}
+
+.about p {
+    color: black;
+    width: 70%;
+}
+
+
+@media (max-width: 768px) {
+    .about .wrapped {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%; /* Ensure wrapped takes full width on small screens */
+        margin: auto; /* Center it horizontally */
+    }
+
+    .about .stat {
+        height: auto;
+        margin-bottom: 20px;
+        order: 2;
+    }
+
+    .about .container {
+        margin: 20px auto;
+        flex: 1;
+        width: 80%; /* Adjust the width t\o a reasonable percentage */
+        max-width: 600px; /* Keep the max\ width as it is */
+        order: 1;
+    }
+    
+}
+
+
+
+/* Services Section */
+.services {
+    width: 100%;
+    padding: 50px 0;
+    box-sizing: border-box; /* Ensure padding is included in the width */
+    color: #052E54;
+    background-color: #f7f7f7;
+}
+
+.services .container {
+    margin: auto;
+    width: 95%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 80px; /* Fixed gap between boxes when horizontal */
+}
+
+.services h2 {
+    font-size: 48px;
+    text-align: center;
+}
+
+.services .box {
+    border-radius: 10px;
+    padding: 20px;
+    max-width: 300px;
+    flex: 1 1 300px; /* Grow and shrink as needed, with a base width of 300px */
+    box-sizing: border-box; /* Include padding in the width calculation */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin: 20px 0; /* Adjust margin to control vertical spacing when stacked */
+}
+
+.services .image-container {
+    width: 300px;
+    height: 400px;
+    overflow: hidden; /* This will hide the parts of the image that go outside the container */
+    position: relative; /* This will help in centering the image */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.services .image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* This will prevent image distortion */
+}
+
+@media (max-width: 1150px) {
+    
+
+    .services .box {
+        max-width: 100%; /* Take full width of the container on smaller screens */
+    }
+
+    .services .box p {
+        max-width: 300px; /* Limit text width to 300px */
+    }
+}
+
+
+/* Customer Testimonials */
+
+.sliding  {
+    margin: auto;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    box-sizing: border-box;
+  }
+
+  .sliding h1{
+    text-align: center;
+    font-size: 40px;
+    color: #052E54;
+  }
+  
+  
+  @keyframes slide {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-100%);
+    }
+  }
+  
+  .sliding .logos {
+    width: 100%;
+    overflow: hidden;
+    padding: 60px 0;
+    background: white;
+    white-space: nowrap;
+    position: relative;
+    margin: auto;
+  }
+  
+  .sliding .logos:before,
+  .sliding .logos:after {
+    position: absolute;
+    top: 0;
+    width: 250px;
+    height: 100%;
+    content: "";
+    z-index: 2;
+  }
+  
+  .sliding .logos:before {
+    left: 0;
+    background: linear-gradient(to left, rgba(255, 255, 255, 0), white);
+  }
+  
+  .sliding .logos:after {
+    right: 0;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0), white);
+  }
+  /*
+  .sliding .logos:hover .logos-slide {
+    animation-play-state: paused;
+  }
+  */
+  .sliding .logos-slide {
+    display: inline-block;
+    animation: 35s slide infinite linear;
+  }
+  .sliding .logos-slide h1{
+    display: inline-block;
+    margin: 0 20px;
+    font-size: 6rem;
+  }
+  .sliding .logos-slide h1 span{
+    color: #FF9900;
+  }
+  /* save for customer testimonials
+  .sliding .logos-slide .container {
+    margin: 0 20px;
+    padding: 20px;
+    display: inline-block;
+    background-color: #f7f7f7;
+    box-shadow: #052E54 3px 3px 5px;
+    border-radius: 15px;
+    height: 20vh;
+    min-width: 30vw;
+    text-align: center;
+    
+  }
+
+  .sliding .logos .logos-slide .container h2{
+    color: #052E54;
+    font-size: 3rem;
+  } */
+
+  @media (max-width: 768px) {
+    .sliding .logos-slide .container{
+        width: fit-content;
+    }
+    .sliding .logos-slide h1{
+        font-size: 2rem;
+      }
+  }
+
+
+/* Quote Section */
+.quote {
+    padding-bottom: 50px;
+    background-color: white;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.quote .container{
+    height: 100%;
+    text-align: center;
+    margin: auto;
+    width: 80%;
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+    max-width: 800px;
+}
+
+.quote h2 {
+    margin: auto;
+    width: 80%;
+    font-size: 36px;
+    color: #052E54;
+}
+
+.quote .quotation{
+    max-width: 70px;
+}
+
+
+
+/* Footer */
+footer {
+    color: white;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #052E54;
+    box-sizing: border-box; /* Ensure padding is included in the width */
+    overflow-x: hidden; /* Prevent horizontal overflow */
+}
+
+footer .container {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 20px; /* Add some padding to the sides */
+    box-sizing: border-box; /* Ensure padding is included in the width */
+}
+
+footer ul {
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap */
+    justify-content: center;
+    width: 100%;
+    padding: 0; /* Remove default padding */
+    list-style-type: none; /* Remove default list style */
+    margin: 0; /* Remove default margin */
+    box-sizing: border-box; /* Ensure padding is included in the width */
+}
+
+footer ul li {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    margin: 10px; /* Add some margin between items */
+    flex: 1 1 30%; /* Allow flex items to grow and shrink, with a base width of 30% */
+    text-align: center;
+    box-sizing: border-box; /* Ensure padding is included in the width */
+}
+
+footer .links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 10px; /* Add margin-top to space below list */
+    padding: 0 20px; /* Add some padding to the sides */
+    box-sizing: border-box; /* Ensure padding is included in the width */
+}
+
+footer .links p,
+footer .links a {
+    margin: 0 10px; /* Add some spacing between elements */
+    text-align: center;
+    vertical-align: middle;
+    display: inline-block;
+    color: #ccc;
+    text-decoration: none;
+}
+
+footer .links a img {
+    width: 20px; /* Adjust width as needed */
+    vertical-align: middle;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+    .container {
+        width: 100%; /* Full width for small screens */
+    }
+
+    footer ul {
+        flex-direction: column; /* Stack items vertically */
+    }
+
+    footer ul li {
+        width: 100%; /* Full width for small screens */
+        margin-bottom: 10px; /* Add some space between items */
+    }
+}
+
+/* Media query for larger screens */
+@media (min-width: 769px) {
+    footer ul li {
+        width: 30%; /* Ensure items take up 30% of the width on larger screens */
+    }
+}
+
+/* Coming Soon Section */
+.coming-soon {
+    width: 100%;
+    box-sizing: border-box; /* Ensure padding is included in the width */
+    background-color: #e7e7e7;
+    display: flex;
+    color: #052E54;
+    height: auto;
+    max-height: 80vh;
+    position: relative;
+
+}
+
+.coming-soon img{
+    max-height: 80vh;
+    height: 100%;
+    margin-left: auto;
+}
+.coming-soon .content {
+    border-radius: 20px;
+    width: 60%;
+    position: relative;
+    z-index: 2;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #052E54;
+    max-width: 600px;
+    margin: auto;
+}
+
+.coming-soon .content h1 {
+    font-size: 48px;
+}
+
+.coming-soon .content p {
+    font-size: 24px;
+    width: 70%;
+    color: #10487c;
+}
+
+.coming-soon .btn {
+    background-color: #FF9900;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    text-decoration: none;
+}
+
+.coming-soon .btn:hover {
+    background-color: #f1b65c;
+}
+
+.coming-soon .input {
+    border:1px solid #052E54;
+    background-color: white;
+    color: #052E54;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    text-decoration: none;
+    margin-right: -4px;
+}
+
+@media (max-width: 1400px) {
+    .coming-soon{
+        flex-direction: column;
+        height: 80vh;
+        max-height: none;
+        background-image: url('images/landing.jpg');
+        background-size:cover;
+        background-repeat: none;
+        background-position: center;
+    }
+
+    .coming-soon img{
+        display: none;
+    }
+    .coming-soon .content p{
+        color: #f7f7f7;
+    }
+    .coming-soon .content h1{
+        color: white;
+    }
+    .coming-soon span{
+        color: #FF9900;
+    }
+}
+
+.help {
+    padding: 80px 20px 20px; /* Space around the section with extra top padding for fixed header */
+    text-align: center; /* Center the grid container */
+    width: 80%;
+    margin: auto;
+    min-height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.videos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive columns */
+    gap: 20px; /* Space between thumbnails */
+    justify-content: center; /* Center the grid items horizontally */
+    margin-bottom: 20px; /* Space between rows of thumbnails */
+    max-width: 100%; /* Ensure the grid container doesn’t exceed the width */
+    margin-left: auto; /* Center the container horizontally */
+    margin-right: auto; /* Center the container horizontally */
+}
+
+.videos a {
+    display: block;
+    width: 100%;
+    max-width: 300px; /* Max width of the thumbnail */
+    max-height: 168.75px; /* Max height for the thumbnail */
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto; /* Center thumbnails within the grid container */
+}
+
+.videos a::before {
+    content: "";
+    display: block;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+}
+
+.videos img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Maintain aspect ratio and cover the area */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for a cleaner look */
+    transition: transform 0.3s ease; /* Smooth zoom on hover */
+}
+
+.videos img:hover {
+    transform: scale(1.05); /* Slight zoom on hover */
+}
+
+@media (max-width: 900px) {
+    .help {
+        width: 60%;
+        padding: 80px 10px 20px; /* Add more space on sides and top padding for fixed header */
+    }
+
+    .videos {
+        grid-template-columns: 1fr; /* Stack thumbnails in a single column */
+        gap: 20px; /* Increase gap for stacked layout */
+        margin-bottom: 30px; /* Add more space between rows */
+    }
+
+    .videos a {
+        max-width: 90%; /* Full width of the container with some padding */
+        max-height: 56.25vw; /* Adjust height based on viewport width to maintain 16:9 aspect ratio */
+    }
+}
+
+.privacy {
+    padding: 80px;
+    background-color: white;
+    color: #052E54;
+}
+
+.privacy p, .privacy li, .privacy a{
+    color: #093d6e;
+}
+
+.signup-form{
+    padding: 5vh;
+
+}
+
+.signup-form .container{
+    background-color: #f7f7f7;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 80%;
+    border-radius: 10px;
+    align-items: center;
+    color: #052E54;
+    max-width: 600px;
+}
+
+.signup-form .container input{
+    width: 50%;
+    margin-bottom: 4vh;
+    height: 3vh;
+    min-height: 20px;
+    border:1px solid #052E54;
+    border-radius: 5px;
+}
+
+.signup-form .container button{
+    background-color: #FF9900;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+
+}
+
+.email-verified{
+    height: 60dvh;
+    text-align: center;
+    color: #052E54;
+}
+.email-verified span{
+    color: #FF9900;
+}
+
+.login-form{
+    padding: 5vh;
+    height: 60dvh;
+}
+
+.login-form .container{
+    background-color: #f7f7f7;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 80%;
+    border-radius: 10px;
+    align-items: center;
+    color: #052E54;
+    max-width: 600px;
+}
+
+.login-form .container input{
+    width: 50%;
+    margin-bottom: 4vh;
+    height: 3vh;
+    min-height: 20px;
+    border:1px solid #052E54;
+    border-radius: 5px;
+}
+
+.login-form .container button{
+    background-color: #FF9900;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 4dvh;
+}
+
+
+.resend-verify{
+    padding: 5vh;
+    height: 50dvh;
+}
+
+.resend-verify .container{
+    background-color: #f7f7f7;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 80%;
+    border-radius: 10px;
+    align-items: center;
+    color: #052E54;
+    max-width: 600px;
+}
+
+.resend-verify .container input{
+    width: 50%;
+    margin-bottom: 4vh;
+    height: 3vh;
+    min-height: 20px;
+    border:1px solid #052E54;
+    border-radius: 5px;
+}
+
+.resend-verify .container button{
+    background-color: #FF9900;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 4dvh;
+}
+.resend-verify .container button:hover{
+    background-color: #f1b65c;
+}
