@@ -111,6 +111,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 headers: {
                     'Content-Type': 'application/json'
                 },
+                credentials: 'include',
                 body: JSON.stringify({ email, password })
             })
             .then(response => response.json())
@@ -151,7 +152,9 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Check the user’s status
-    fetch(`${backendDir}/api/user-status`)
+    fetch(`${backendDir}/api/user-status`, {
+        credentials: 'include'
+    })
         .then(response => response.json())
         .then(data => {
             loadNavbar(data.loggedIn);
