@@ -156,7 +156,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <a href="index.html">Home</a>
             <a href="#footer">Contact</a>
             <a href="login.html">Settings</a>
-            <a href=# id="signOut">Sign Out</a>
+            <a id="signOut">Sign Out</a>
             `;
             
 
