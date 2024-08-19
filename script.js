@@ -1,4 +1,4 @@
-const backendDir = 'https://rothbard-backend.onrender.com';
+const backendDir = 'https://api.rothbardbitcoin.com';
 
 document.addEventListener('DOMContentLoaded', function() {
     console.log('JavaScript loaded');
