@@ -131,9 +131,9 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Function to load the appropriate navbar
-    function loadNavbar(loggedIn) {
+    function loadNavbar(user_id) {
         const navbar = document.getElementById('navbar');
-        if (loggedIn) {
+        if (user_id) {
             navbar.innerHTML = `
             <a href="index.html">Home</a>
             <a href="#footer">Contact</a>
@@ -157,11 +157,7 @@ document.addEventListener('DOMContentLoaded', function() {
     })
         .then(response => response.json())
         .then(data => {
-            console.log('hello');
-            console.log(data.loggedIn);
-            console.log('hell3323o');
-            loadNavbar(data.loggedIn);
-            console.log('hello2');
+            loadNavbar(data.user_id);
 
         })
         .catch(error => {
