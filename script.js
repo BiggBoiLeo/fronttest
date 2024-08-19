@@ -116,9 +116,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 body: JSON.stringify({ email, password })
             })
             .then(response => response.json())
-            .then(
+            .then(data =>{
+                console.log('Successfully logged in:', data),
                 window.location.href = 'index.html'
-            )
+            })
             .catch(error => {
                 console.error('Error:', error);
                 alert(error);
@@ -134,14 +135,14 @@ document.addEventListener('DOMContentLoaded', function() {
             credentials: 'include',
             method: 'POST'
         })
-            .then(response => response.json())
-            .then(data => {
-                console.log(data.message);
+        .then(response => response.json())
+        .then(data => {
+            console.log(data.message);
 
-            })
-            .catch(error => {
-                console.error('Error signing out:', error);
-            });
+        })
+        .catch(error => {
+            console.error('Error signing out:', error);
+        });
     }
 
     // Function to load the appropriate navbar
