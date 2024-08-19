@@ -130,14 +130,17 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    function signOut(){
+    function signOut(event){
+
+        event.preventDefault();
+
         fetch(`${backendDir}/api/logout`, {
             credentials: 'include'
         })
             .then(response => response.json())
             .then(data => {
-                alert(message);
-    
+                alert(data.message);
+                window.location.href = 'index.html'
             })
             .catch(error => {
                 console.error('Error signing out:', error);
@@ -152,7 +155,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <a href="index.html">Home</a>
             <a href="#footer">Contact</a>
             <a href="login.html">Settings</a>
-            <a onClick="signOut()">Sign Out</a>
+            <a href=# onClick="signOut(event)">Sign Out</a>
             `;
                 
         } else {
