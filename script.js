@@ -130,6 +130,20 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    function signOut(){
+        fetch(`${backendDir}/api/logout`, {
+            credentials: 'include'
+        })
+            .then(response => response.json())
+            .then(data => {
+                alert(message);
+    
+            })
+            .catch(error => {
+                console.error('Error signing out:', error);
+            });
+    }
+
     // Function to load the appropriate navbar
     function loadNavbar(loggedIn) {
         const navbar = document.getElementById('navbar');
@@ -138,7 +152,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <a href="index.html">Home</a>
             <a href="#footer">Contact</a>
             <a href="login.html">Settings</a>
-            <a href="signup.html">Sign Out</a>
+            <a onClick="signOut()">Sign Out</a>
             `;
                 
         } else {
@@ -165,6 +179,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Optionally handle errors or fallback
             loadNavbar(false);
         });
+
 
     
     const resendVerifySection = document.getElementById('resendVerify');
