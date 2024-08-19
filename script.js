@@ -116,16 +116,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 body: JSON.stringify({ email, password })
             })
             .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    alert('it worked');
-                } else {
-                    alert('Login failed: ' + data.message);
-                }
-            })
+            .then(
+                window.location.href = 'index.html'
+            )
             .catch(error => {
                 console.error('Error:', error);
-                alert('An error occurred during login.');
+                alert(error);
             });
         });
     }
@@ -140,8 +136,8 @@ document.addEventListener('DOMContentLoaded', function() {
         })
             .then(response => response.json())
             .then(data => {
-                alert(data.message);
-                window.location.href = 'index.html'
+                console.log(data.message);
+
             })
             .catch(error => {
                 console.error('Error signing out:', error);
@@ -156,7 +152,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <a href="index.html">Home</a>
             <a href="#footer">Contact</a>
             <a href="login.html">Settings</a>
-            <a id="signOut">Sign Out</a>
+            <a href="index.html" id="signOut">Sign Out</a>
             `;
             
 
