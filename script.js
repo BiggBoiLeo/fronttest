@@ -135,7 +135,8 @@ document.addEventListener('DOMContentLoaded', function() {
         event.preventDefault();
 
         fetch(`${backendDir}/api/logout`, {
-            credentials: 'include'
+            credentials: 'include',
+            method: 'POST'
         })
             .then(response => response.json())
             .then(data => {
@@ -155,7 +156,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <a href="index.html">Home</a>
             <a href="#footer">Contact</a>
             <a href="login.html">Settings</a>
-            <a href=# onClick="signOut(event)">Sign Out</a>
+            <a href=# onClick="signOut">Sign Out</a>
             `;
                 
         } else {
