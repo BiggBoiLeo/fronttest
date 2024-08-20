@@ -237,14 +237,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 })
                 .then(response => response.json())
                 .then(data =>{
-                    const getEmail = data.email;
+                    email.innerText = data.email;
                 })
                 .catch(error => {
                     console.error('Error:', error);
                     alert(error);
                 });
-
-                email.innerText = `${getEmail}`;
             } else {
                 container.innerHTML = `
                 <h3>Can not load information when logged out</h3>
