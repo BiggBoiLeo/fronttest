@@ -152,7 +152,8 @@ document.addEventListener('DOMContentLoaded', function() {
             navbar.innerHTML = `
             <a href="index.html">Home</a>
             <a href="#footer">Contact</a>
-            <a href="login.html">Settings</a>
+            <a href="vault.html>My Vault</a>
+            <a href="settings.html">Settings</a>
             <a href="index.html" id="signOut">Sign Out</a>
             `;
             
