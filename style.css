@@ -879,6 +879,10 @@ footer .links a img {
 
 }
 
+.signup-form .container button:hover{
+    background-color: #f1b65c;
+}
+
 .email-verified{
     height: 60dvh;
     text-align: center;
@@ -924,6 +928,9 @@ footer .links a img {
     margin-bottom: 4dvh;
 }
 
+.login-form .container button:hover{
+    background-color: #f1b65c;
+}
 
 .resend-verify{
     padding: 5vh;
