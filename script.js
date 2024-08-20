@@ -178,12 +178,13 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(response => response.json())
         .then(data => {
             loadNavbar(data.loggedIn);
-
+            settings(data.loggedIn);
         })
         .catch(error => {
             console.error('Error fetching user status:', error);
             // Optionally handle errors or fallback
             loadNavbar(false);
+            settings(false);
         });
 
 
@@ -223,6 +224,33 @@ document.addEventListener('DOMContentLoaded', function() {
                 alert('An error occurred while trying to resend the verification email.');
             });
         });
+    }
+
+    function settings(loggedIn){
+        const settingsPage = document.getElementById('settings');
+        if (settingsPage) {
+            const container = document.getElementById('setContainer');
+            const email = document.getElementById('theirEmail');
+            if(loggedIn){
+                fetch(`${backendDir}/api/profile`, {
+                    credentials: 'include',
+                })
+                .then(response => response.json())
+                .then(data =>{
+                    const getEmail = data.email;
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert(error);
+                });
+
+                email.innerText = `${getEmail}`;
+            } else {
+                container.innerHTML = `
+                <h3>Can not load information when logged out<h1>
+            `;
+            }
+        }
     }
 
 });

@@ -106,7 +106,7 @@ nav .dropdown-content {
 }
 
 nav .dropdown-content a:hover{
-    background-color: #ccc;
+    background-color: #052E54;
 }
 
 nav .dropdown-content a {
@@ -967,6 +967,52 @@ footer .links a img {
     border-radius: 5px;
     margin-bottom: 4dvh;
 }
+
 .resend-verify .container button:hover{
     background-color: #f1b65c;
 }
+
+.settings{
+    background-color: #f7f7f7;
+    height: stretch;
+    padding: 4dvh;
+}
+
+.settings .setContainer{
+    background-color: #052E54;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 80%;
+    border-radius: 10px;
+    align-items: center;
+    color: #052E54;
+    max-width: 100dvh;
+    margin:auto;
+}
+
+.settings .setContainer .nextTo{
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    color: white;
+}
+
+.settings .setContainer input{
+    width: 50%;
+    margin-bottom: 4vh;
+    height: 3vh;
+    min-height: 20px;
+    border:1px solid #052E54;
+    border-radius: 5px;
+}
+
+.settings .setContainer a{
+    color: #FF9900;
+}
+
+.settings .setContainer a:hover{
+    color: #f1b65c;
+}
+
