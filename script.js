@@ -150,7 +150,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const navbar = document.getElementById('navbar');
         if (loggedIn) {
             navbar.innerHTML = `
-            <a href="index.html">Home</a>
             <a href="#footer">Contact</a>
             <a href="vault.html">My Vault</a>
             <a href="settings.html">Settings</a>
