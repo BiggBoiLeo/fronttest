@@ -153,7 +153,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <a href="#footer">Contact</a>
             <a href="vault.html">My Vault</a>
             <a href="settings.html">Settings</a>
-            <a href="index.html" id="signOut">Sign Out</a>
+            <a href="login.html" id="signOut">Sign Out</a>
             `;
             
 
