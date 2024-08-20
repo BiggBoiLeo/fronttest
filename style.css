@@ -105,6 +105,10 @@ nav .dropdown-content {
     top: 100%; /* Position the dropdown below the button */
 }
 
+.dropdown-content:hover{
+    background-color: #052E54;
+}
+
 nav .dropdown-content a {
     color: white;
     padding: 12px 16px;
