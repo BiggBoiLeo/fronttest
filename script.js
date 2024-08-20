@@ -247,7 +247,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 email.innerText = `${getEmail}`;
             } else {
                 container.innerHTML = `
-                <h3>Can not load information when logged out<h1>
+                <h3>Can not load information when logged out</h3>
             `;
             }
         }
