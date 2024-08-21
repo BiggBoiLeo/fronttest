@@ -288,7 +288,8 @@ function setProfileAttribute(){
     enterFirst = document.getElementById('enterFirst').value;
     enterLast = document.getElementById('enterLast').value;
     enterDOB = document.getElementById('enterDOB').value;
-
+    
+    console.log('sending to server');
     fetch(`${backendDir}/api/updateProfile`, {
         method: 'POST',
         headers: {
