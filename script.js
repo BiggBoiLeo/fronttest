@@ -231,6 +231,10 @@ document.addEventListener('DOMContentLoaded', function() {
         if (settingsPage) {
             const container = document.getElementById('setContainer');
             const email = document.getElementById('theirEmail');
+            const firstName = document.getElementById('theirFirst');
+            const lastName = document.getElementById('theirLast');
+            const DOB = document.getElementById('theirDOB');
+
             if(loggedIn){
                 fetch(`${backendDir}/api/profile`, {
                     credentials: 'include',
@@ -238,6 +242,21 @@ document.addEventListener('DOMContentLoaded', function() {
                 .then(response => response.json())
                 .then(data =>{
                     email.innerText = data.email;
+                    if(data.first){
+                        firstName.innerText = data.first;
+                    } else {
+                        choseProfileAttribute(getElementById('firstChange'), firstName, getElementById('enterFirst') );
+                    }
+                    if(data.last){
+                        lastName.innerText = data.last;
+                    } else {
+                        choseProfileAttribute(getElementById('lastChange'), lastName, getElementById('enterLast') );
+                    }
+                    if(data.DOB){
+                        DOB.innerText = data.DOB;
+                    } else {
+                        choseProfileAttribute(getElementById('DOBChange'), DOB, getElementById('enterDOB') );
+                    }
                 })
                 .catch(error => {
                     console.error('Error:', error);
@@ -245,10 +264,21 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
             } else {
                 container.innerHTML = `
-                <h3>Can not load information when logged out</h3>
+                <h3 style="color: white;">Can not load information when logged out</h3>
             `;
             }
         }
+    }
+    function choseProfileAttribute(changeLink, theirInfo, inputBox){
+        changeLink.style.display = 'none';
+        theirInfo.style.display = 'none';
+        inputBox.style.display = 'inline';
+    }
+    
+    function setProfileAttribute(changeLink, theirInfo, inputBox){
+        changeLink.style.display = 'inline';
+        theirInfo.style.display = 'inline';
+        inputBox.style.display = 'none';
     }
 
 });
@@ -259,3 +289,6 @@ function toggleDropdown() {
         dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
     }
 }
+
+
+
