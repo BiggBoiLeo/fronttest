@@ -245,17 +245,17 @@ document.addEventListener('DOMContentLoaded', function() {
                     if(data.first){
                         firstName.innerText = data.first;
                     } else {
-                        choseProfileAttribute(document.getElementById('firstChange'), firstName, document.getElementById('enterFirst') );
+                        choseProfileAttribute(firstName, document.getElementById('enterFirst') );
                     }
                     if(data.last){
                         lastName.innerText = data.last;
                     } else {
-                        choseProfileAttribute(document.getElementById('lastChange'), lastName, document.getElementById('enterLast') );
+                        choseProfileAttribute(lastName, document.getElementById('enterLast') );
                     }
                     if(data.DOB){
                         DOB.innerText = data.DOB;
                     } else {
-                        choseProfileAttribute(document.getElementById('DOBChange'), DOB, document.getElementById('enterDOB') );
+                        choseProfileAttribute(DOB, document.getElementById('enterDOB') );
                     }
                 })
                 .catch(error => {
@@ -269,8 +269,8 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     }
-    function choseProfileAttribute(changeLink, theirInfo, inputBox){
-        changeLink.style.display = 'none';
+
+    function choseProfileAttribute(theirInfo, inputBox){
         theirInfo.style.display = 'none';
         inputBox.style.display = 'inline';
     }
