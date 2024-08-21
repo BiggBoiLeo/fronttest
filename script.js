@@ -285,9 +285,9 @@ function toggleDropdown() {
 }
 
 function setProfileAttribute(){
-    enterFirst = document.getElementById('enterFirst').value;
-    enterLast = document.getElementById('enterLast').value;
-    enterDOB = document.getElementById('enterDOB').value;
+    let enterFirst = document.getElementById('enterFirst').value;
+    let enterLast = document.getElementById('enterLast').value;
+    let enterDOB = document.getElementById('enterDOB').value;
     
     console.log('sending to server');
     fetch(`${backendDir}/api/updateProfile`, {
@@ -301,12 +301,13 @@ function setProfileAttribute(){
     .then(response => response.json())
     .then(data =>{
         console.log('Successfully updated Profile:', data)
+        location.reload();
     })
     .catch(error => {
         console.error('Error:', error);
     });
 
-    location.reload();
+    
 }
 
 

@@ -38,10 +38,31 @@
 
 <section class="settings" id="settings">
     <div class="setContainer" id="setContainer">
-        <div class="nextTo"><h3>Email: </h3><br><br><h4 id="theirEmail"></h4></div>
-        <div class="nextTo"><h3>First Name:</h3><br><br><h4 id="theirFirst"></h4><input type="first" placeholder="First Name" id="enterFirst" name="first" required="" class="inputSettings"></div>
-        <div class="nextTo"><h3>Last Name:</h3><br><br><h4 id="theirLast"></h4><input type="last" placeholder="Last Name" id="enterLast" name="last" required="" class="inputSettings"></div>
-        <div class="nextTo"><h3>Date of Birth:</h3><br><br><h4 id="theirDOB"></h4><input type="DOB" placeholder="Year-Month-Day (e.c. 2000-01-01)" id="enterDOB" name="DOB" required="" class="inputSettings"></div>
+        <div class="nextTo">
+            <h3>Email: </h3><br><br>
+            <h4 id="theirEmail"></h4>
+        </div>
+        <div class="nextTo">
+            <label for="enterFirst">
+                <h3>First Name:</h3>
+            </label><br><br>
+            <h4 id="theirFirst"></h4>
+            <input type="text" placeholder="First Name" id="enterFirst" name="first" required="" class="inputSettings">
+        </div>
+        <div class="nextTo">
+            <label for="enterLast">
+                <h3>Last Name:</h3>
+            </label><br><br>
+            <h4 id="theirLast"></h4>
+            <input type="text" placeholder="Last Name" id="enterLast" name="last" required="" class="inputSettings">
+        </div>
+        <div class="nextTo">
+            <label for="enterDOB">
+                <h3>Date of Birth:</h3>
+            </label><br><br>
+            <h4 id="theirDOB"></h4>
+            <input type="text" placeholder="Year-Month-Day (e.g., 2000-01-01)" id="enterDOB" name="DOB" required="" class="inputSettings">
+        </div>
         <button class="saveInfo" id="saveInfo" onclick="setProfileAttribute()">Save</button>
     </div>
 </section>
