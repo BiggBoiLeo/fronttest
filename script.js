@@ -301,7 +301,6 @@ function setProfileAttribute(){
     .then(response => response.json())
     .then(data =>{
         console.log('Successfully updated Profile:', data)
-        location.reload();
     })
     .catch(error => {
         console.error('Error:', error);
