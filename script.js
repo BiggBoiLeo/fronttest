@@ -245,17 +245,17 @@ document.addEventListener('DOMContentLoaded', function() {
                     if(data.first){
                         firstName.innerText = data.first;
                     } else {
-                        choseProfileAttribute(getElementById('firstChange'), firstName, getElementById('enterFirst') );
+                        choseProfileAttribute(document.getElementById('firstChange'), firstName, document.getElementById('enterFirst') );
                     }
                     if(data.last){
                         lastName.innerText = data.last;
                     } else {
-                        choseProfileAttribute(getElementById('lastChange'), lastName, getElementById('enterLast') );
+                        choseProfileAttribute(document.getElementById('lastChange'), lastName, document.getElementById('enterLast') );
                     }
                     if(data.DOB){
                         DOB.innerText = data.DOB;
                     } else {
-                        choseProfileAttribute(getElementById('DOBChange'), DOB, getElementById('enterDOB') );
+                        choseProfileAttribute(document.getElementById('DOBChange'), DOB, document.getElementById('enterDOB') );
                     }
                 })
                 .catch(error => {
