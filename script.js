@@ -236,6 +236,8 @@ document.addEventListener('DOMContentLoaded', function() {
             const DOB = document.getElementById('theirDOB');
 
             if(loggedIn){
+                let noSave=0;
+
                 fetch(`${backendDir}/api/profile`, {
                     credentials: 'include',
                 })
@@ -244,18 +246,27 @@ document.addEventListener('DOMContentLoaded', function() {
                     email.innerText = data.email;
                     if(data.first){
                         firstName.innerText = data.first;
+                        document.getElementById('enterFirst').style.display = 'none';
+                        noSave++;
                     } else {
                         choseProfileAttribute(firstName, document.getElementById('enterFirst') );
                     }
                     if(data.last){
                         lastName.innerText = data.last;
+                        document.getElementById('enterLast').style.display = 'none';
+                        noSave++;
                     } else {
                         choseProfileAttribute(lastName, document.getElementById('enterLast') );
                     }
                     if(data.DOB){
                         DOB.innerText = data.DOB;
+                        document.getElementById('enterDOB').style.display = 'none';
+                        noSave++;
                     } else {
                         choseProfileAttribute(DOB, document.getElementById('enterDOB') );
+                    }
+                    if(noSave == 3){
+                        document.getElementById('saveInfo').style.display = 'none';
                     }
                 })
                 .catch(error => {
@@ -300,7 +311,8 @@ function setProfileAttribute(){
     })
     .then(response => response.json())
     .then(data =>{
-        console.log('Successfully updated Profile:', data)
+        console.log('Successfully updated Profile:', data);
+        location.reload();
     })
     .catch(error => {
         console.error('Error:', error);
