@@ -274,12 +274,6 @@ document.addEventListener('DOMContentLoaded', function() {
         theirInfo.style.display = 'none';
         inputBox.style.display = 'inline';
     }
-    
-    function setProfileAttribute(changeLink, theirInfo, inputBox){
-        changeLink.style.display = 'inline';
-        theirInfo.style.display = 'inline';
-        inputBox.style.display = 'none';
-    }
 
 });
 
@@ -290,5 +284,28 @@ function toggleDropdown() {
     }
 }
 
+function setProfileAttribute(){
+    enterFirst = document.getElementById('enterFirst').value;
+    enterLast = document.getElementById('enterLast').value;
+    enterDOB = document.getElementById('enterDOB').value;
+
+    fetch(`${backendDir}/api/updateProfile`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        credentials: 'include',
+        body: JSON.stringify({ enterFirst, enterLast, enterDOB })
+    })
+    .then(response => response.json())
+    .then(data =>{
+        console.log('Successfully updated Profile:', data)
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+
+    location.reload();
+}
 
 
