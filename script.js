@@ -299,6 +299,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const xpubButton = document.getElementById('xpub-button');
     const fingerprintElement = document.getElementById('fingerprint');
     const xpubElement = document.getElementById('xpub');
+    const trezorInfo = document.getElementById('trezor-info');
 
     selectMethod.addEventListener('change', function() {
         if (this.value === 'Trezor') {
@@ -314,13 +315,15 @@ document.addEventListener('DOMContentLoaded', function() {
         event.preventDefault();
         if (selectMethod.value === 'Trezor') {
             TrezorConnect.getPublicKey({
-                path: "m/44'/0'/0'/0'",
+                path: "m/48'/0'/0'/2'",
                 coin: "Bitcoin",
             }).then(function(result) {
                 if (result.success) {
                     const { xpub, fingerprint } = result.payload;
                     fingerprintElement.textContent = 'Fingerprint: ' + fingerprint;
                     xpubElement.textContent = 'Master xPub: ' + xpub;
+                    trezorInfo.style.display = 'block';
+                    
                 } else {
                     alert('Failed to get Trezor information: ' + result.payload.error);
                 }
