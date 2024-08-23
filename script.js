@@ -314,7 +314,7 @@ document.addEventListener('DOMContentLoaded', function() {
         event.preventDefault();
         if (selectMethod.value === 'Trezor') {
             TrezorConnect.getPublicKey({
-                path: "m/48'/0'/0'/2'",
+                path: "m/44'/0'/0'/0'",
                 coin: "Bitcoin",
             }).then(function(result) {
                 if (result.success) {
