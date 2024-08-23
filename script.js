@@ -308,7 +308,9 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         getTrezorInfoButton.addEventListener('click', function() {
-            fetch('/get-trezor-info')
+            fetch(`${backendDir}/get-trezor-info`,{
+                credentials: include
+            })
                 .then(response => response.json())
                 .then(data => {
                     if (data.error) {
