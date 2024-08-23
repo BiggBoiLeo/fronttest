@@ -37,7 +37,52 @@
 </header>
 
 <section class="vault" id="vault">
-    
+    <button>Create my Vault</button>
+
+    <div id="wallet-creator">
+        <h2>Create a Vault</h2>
+        
+        <form id="wallet-form">
+            <label for="wallet-name">Wallet Name:</label>
+            <input type="text" id="wallet-name" name="walletName" required>
+          
+            <div class="wallet-import" id="wallet-importer">
+                <label for="selectMethod">Select Your Method</label>
+                <select name="Select Import Method" id="selectMethod">
+                    <option value="Trezor">Trezor</option>
+                    <option value="From Text">From Text</option>
+                </select>
+                
+                <div id="trezor-info" style="display:none;">
+                    <p id="fingerprint"></p>
+                    <p id="xpub"></p>
+                    <button type="button" id="get-trezor-info">Get Trezor Info</button>
+                </div>
+                
+                <input id="xpub-text" placeholder="Your xpub..." style="display:none;">
+                <button id="xpub-button" style="display:none;">Import xPub</button>
+            </div>
+
+            <div class="wallet-import" id="wallet-importer">
+                <label for="selectMethod">Select Your Method</label>
+                <select name="Select Import Method" id="selectMethod">
+                    <option value="Trezor">Trezor</option>
+                    <option value="From Text">From Text</option>
+                </select>
+                
+                <div id="trezor-info" style="display:none;">
+                    <p id="fingerprint"></p>
+                    <p id="xpub"></p>
+                    <button type="button" id="get-trezor-info">Get Trezor Info</button>
+                </div>
+                
+                <input id="xpub-text" placeholder="Your xpub..." style="display:none;">
+                <button id="xpub-button" style="display:none;">Import xPub</button>
+            </div>
+          
+            <button type="submit">Create Wallet</button>
+        </form>
+    </div>
 </section>
 
 <footer id="footer">

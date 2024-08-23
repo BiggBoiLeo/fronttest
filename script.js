@@ -286,6 +286,43 @@ document.addEventListener('DOMContentLoaded', function() {
         inputBox.style.display = 'inline';
     }
 
+    //Importing the xpub and fingerprint
+    const selectMethod = document.getElementById('selectMethod');
+        const trezorInfo = document.getElementById('trezor-info');
+        const xpubText = document.getElementById('xpub-text');
+        const xpubButton = document.getElementById('xpub-button');
+        const getTrezorInfoButton = document.getElementById('get-trezor-info');
+        const fingerprintElement = document.getElementById('fingerprint');
+        const xpubElement = document.getElementById('xpub');
+
+        selectMethod.addEventListener('change', function() {
+            if (this.value === 'Trezor') {
+                trezorInfo.style.display = 'block';
+                xpubText.style.display = 'none';
+                xpubButton.style.display = 'none';
+            } else {
+                trezorInfo.style.display = 'none';
+                xpubText.style.display = 'block';
+                xpubButton.style.display = 'block';
+            }
+        });
+
+        getTrezorInfoButton.addEventListener('click', function() {
+            fetch('/get-trezor-info')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.error) {
+                        alert(data.error);
+                    } else {
+                        fingerprintElement.textContent = 'Fingerprint: ' + data.fingerprint;
+                        xpubElement.textContent = 'Master xPub: ' + data.xpub;
+                    }
+                })
+                .catch(error => {
+                    alert('Error fetching Trezor info: ' + error.message);
+                });
+        });
+
 });
 
 function toggleDropdown() {
