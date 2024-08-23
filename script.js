@@ -1,5 +1,12 @@
 const backendDir = 'https://api.rothbardbitcoin.com';
 
+//trezor manifest
+TrezorConnect.manifest({
+    email: 'rothbardhelp@gmail.com',
+    appUrl: 'https://test.rothbardbitcoin.com'
+});
+
+
 document.addEventListener('DOMContentLoaded', function() {
     console.log('JavaScript loaded');
     
