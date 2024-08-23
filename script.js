@@ -296,7 +296,6 @@ document.addEventListener('DOMContentLoaded', function() {
     selectMethod.addEventListener('change', function() {
         if (this.value === 'Trezor') {
             xpubText.style.display = 'none';
-            xpubButton.style.display ='block';
             xpubButton.textContent = 'Connect Trezor';
         } else {
             xpubText.style.display = 'block';
