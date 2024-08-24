@@ -346,6 +346,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     walletInfo.style.display = 'block';
                 } catch (e) {
                     alert('invalid xpub:', e);
+                    console.log(e);
                 }
             
             }
