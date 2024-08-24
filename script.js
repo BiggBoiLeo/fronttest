@@ -301,7 +301,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const xpubButton1 = document.getElementById('xpub-button1');
         const fingerprintElement1 = document.getElementById('fingerprint1');
         const xpubElement1 = document.getElementById('xpub1');
-        const trezorInfo1 = document.getElementById('trezor-info1');
+        const trezorInfo1 = document.getElementById('wallet-info1');
 
         selectMethod1.addEventListener('change', function() {
             if (this.value === 'Trezor') {
@@ -318,7 +318,7 @@ document.addEventListener('DOMContentLoaded', function() {
             getxPubandFinger(selectMethod1, xpubElement1, fingerprintElement1, trezorInfo1, xpubText1);
         });
 
-        function getxPubandFinger(selectMethod, xpubElement, fingerprintElement, trezorInfo, xpubText){
+        function getxPubandFinger(selectMethod, xpubElement, fingerprintElement, walletInfo, xpubText){
             if (selectMethod.value === 'Trezor') {
                 TrezorConnect.getPublicKey({
                     path: "m/48'/0'/0'/2'",
@@ -328,7 +328,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         const { xpub, fingerprint } = result.payload;
                         xpubElement.textContent = 'p2wsh xPub: ' + xpub;
                         fingerprintElement.textContent = 'p2wsh xPub' + fingerprint;
-                        trezorInfo.style.display = 'block';
+                        walletInfo.style.display = 'block';
                     } else {
                         alert('Failed to get specific xpub: ' + result.payload.error);
                     }
@@ -343,8 +343,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     const keyPair = bitcoinjs.bip32.fromBase58(xpub);
                     const fingerprint = keyPair.fingerprint.toString('hex');
                     fingerprintElement.textContent = 'Fingerprint: ' + fingerprint;
+                    walletInfo.style.display = 'block';
                 } catch (e) {
-                    document.getElementById('fingerprintResult').textContent = 'Invalid XPUB.';
+                    alert('invalid xpub');
                 }
             
             }
