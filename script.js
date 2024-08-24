@@ -294,47 +294,58 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     //Importing the xpub and fingerprint
-    const selectMethod = document.getElementById('selectMethod');
-    const xpubText = document.getElementById('xpub-text');
-    const xpubButton = document.getElementById('xpub-button');
-    const fingerprintElement = document.getElementById('fingerprint');
-    const xpubElement = document.getElementById('xpub');
-    const trezorInfo = document.getElementById('trezor-info');
+    const selectMethod1 = document.getElementById('selectMethod1');
+    const xpubText1 = document.getElementById('xpub-text1');
+    const xpubButton1 = document.getElementById('xpub-button1');
+    const fingerprintElement1 = document.getElementById('fingerprint1');
+    const xpubElement1 = document.getElementById('xpub1');
+    const trezorInfo1 = document.getElementById('trezor-info1');
 
-    selectMethod.addEventListener('change', function() {
+    selectMethod1.addEventListener('change', function() {
         if (this.value === 'Trezor') {
-            xpubText.style.display = 'none';
-            xpubButton.textContent = 'Connect Trezor';
+            xpubText1.style.display = 'none';
+            xpubButton1.textContent = 'Connect Trezor';
         } else {
-            xpubText.style.display = 'block';
-            xpubButton.textContent = 'Import xPub';
+            xpubText1.style.display = 'block';
+            xpubButton1.textContent = 'Import xPub';
         }
     });
 
-    xpubButton.addEventListener('click', function(event) {
+    xpubButton1.addEventListener('click', function(event) {
         event.preventDefault();
-        if (selectMethod.value === 'Trezor') {
+        if (selectMethod1.value === 'Trezor') {
+            TrezorConnect.getPublicKey({
+                path: "m/",
+                coin: "Bitcoin",
+            }).then(function(result) {
+                if (result.success) {
+                    const { fingerprint } = result.payload;
+                    fingerprintElement1.textContent = 'Master Fingerprint: ' + fingerprint;
+                } else {
+                    alert('Failed to get master fingerprint: ' + result.payload.error);
+                }
+            }).catch(function(error) {
+                alert('Error connecting to Trezor: ' + error.message);
+            });
             TrezorConnect.getPublicKey({
                 path: "m/48'/0'/0'/2'",
                 coin: "Bitcoin",
             }).then(function(result) {
                 if (result.success) {
-                    const { xpub, fingerprint } = result.payload;
-                    fingerprintElement.textContent = 'Fingerprint: ' + fingerprint;
-                    xpubElement.textContent = 'Master xPub: ' + xpub;
-                    trezorInfo.style.display = 'block';
-                    
+                    const { xpub } = result.payload;
+                    xpubElement1.textContent = 'p2wsh xPub: ' + xpub;
+                    trezorInfo1.style.display = 'block';
                 } else {
-                    alert('Failed to get Trezor information: ' + result.payload.error);
+                    alert('Failed to get specific xpub: ' + result.payload.error);
                 }
             }).catch(function(error) {
                 alert('Error connecting to Trezor: ' + error.message);
             });
         } else {
             // Handle the "From Text" method
-            const xpub = xpubText.value;
-            xpubElement.textContent = 'Imported xPub: ' + xpub;
-            fingerprintElement.textContent = '';  // Clear fingerprint as it may not apply
+            const xpub = xpubText1.value;
+            xpubElement1.textContent = 'Imported xPub: ' + xpub;
+            fingerprintElement1.textContent = '';  // Clear fingerprint as it may not apply
         }
     });
 
