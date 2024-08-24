@@ -319,21 +319,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 coin: "Bitcoin",
             }).then(function(result) {
                 if (result.success) {
-                    const { fingerprint } = result.payload;
-                    fingerprintElement1.textContent = 'Master Fingerprint: ' + fingerprint;
-                } else {
-                    alert('Failed to get master fingerprint: ' + result.payload.error);
-                }
-            }).catch(function(error) {
-                alert('Error connecting to Trezor: ' + error.message);
-            });
-            TrezorConnect.getPublicKey({
-                path: "m/48'/0'/0'/2'",
-                coin: "Bitcoin",
-            }).then(function(result) {
-                if (result.success) {
-                    const { xpub } = result.payload;
+                    const { xpub, fingerprint } = result.payload;
                     xpubElement1.textContent = 'p2wsh xPub: ' + xpub;
+                    fingerprintElement1.textContent = 'p2wsh xPub' + fingerprint;
                     trezorInfo1.style.display = 'block';
                 } else {
                     alert('Failed to get specific xpub: ' + result.payload.error);
