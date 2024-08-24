@@ -341,6 +341,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 xpubElement.textContent = 'Imported xPub: ' + xpub;
                 try {
                     const keyPair = bitcoinjs.bip32.fromBase58(xpub);
+                    console.log('able to bitjs');
                     const fingerprint = keyPair.fingerprint.toString('hex');
                     fingerprintElement.textContent = 'Fingerprint: ' + fingerprint;
                     walletInfo.style.display = 'block';
