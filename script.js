@@ -350,10 +350,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 .then(response => response.json())
                 .then(data => {
                     if (data.success) {
-                        fingerprint = data.fingerprint;
+                        console.log('got data');
+                        const fingerprint = data.fingerprint;
                         fingerprintElement.textContent = 'Derived Fingerprint' + fingerprint;
                     } else {
-                        alert('Resend failed: ' + data.message);
+                        alert('Derivation: ' + data.message);
                     }
                 })
                 .catch(error => {
