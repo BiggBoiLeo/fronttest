@@ -328,7 +328,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         const { xpub, fingerprint } = result.payload;
                         xpubElement.textContent = 'p2wsh xPub: ' + xpub;
                         fingerprintElement.textContent = 'Fingerprint' + fingerprint;
-                        
+                        walletInfo.style.display = 'block';
                     } else {
                         alert('Failed to get specific xpub: ' + result.payload.error);
                     }
