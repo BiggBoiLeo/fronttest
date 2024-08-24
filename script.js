@@ -301,7 +301,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const xpubButton1 = document.getElementById('xpub-button1');
         const fingerprintElement1 = document.getElementById('fingerprint1');
         const xpubElement1 = document.getElementById('xpub1');
-        const trezorInfo1 = document.getElementById('wallet-info1');
+        const walletInfo1 = document.getElementById('wallet-info1');
 
         selectMethod1.addEventListener('change', function() {
             if (this.value === 'Trezor') {
@@ -315,7 +315,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         xpubButton1.addEventListener('click', function(event) {
             event.preventDefault();
-            getxPubandFinger(selectMethod1, xpubElement1, fingerprintElement1, trezorInfo1, xpubText1);
+            getxPubandFinger(selectMethod1, xpubElement1, fingerprintElement1, walletInfo1, xpubText1);
         });
 
         function getxPubandFinger(selectMethod, xpubElement, fingerprintElement, walletInfo, xpubText){
