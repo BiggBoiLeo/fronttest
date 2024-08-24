@@ -339,16 +339,27 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Handle the "From Text" method
                 const xpub = xpubText.value;
                 xpubElement.textContent = 'Imported xPub: ' + xpub;
-                try {
-                    const keyPair = bitcoinjs.bip32.fromBase58(xpub);
-                    console.log('able to bitjs');
-                    const fingerprint = keyPair.fingerprint.toString('hex');
-                    fingerprintElement.textContent = 'Fingerprint: ' + fingerprint;
-                    walletInfo.style.display = 'block';
-                } catch (e) {
-                    alert('invalid xpub:', e);
-                    console.log(e);
-                }
+                fetch(`${backendDir}/api/getFingerprint`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    credentials: 'include',
+                    body: JSON.stringify({ xpub })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        fingerprint = data.fingerprint;
+                        fingerprintElement.textContent = 'Derived Fingerprint' + fingerprint;
+                    } else {
+                        alert('Resend failed: ' + data.message);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('An error occurred while trying to derive fingerprint');
+                });
             
             }
         }
