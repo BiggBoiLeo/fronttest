@@ -293,50 +293,63 @@ document.addEventListener('DOMContentLoaded', function() {
         inputBox.style.display = 'inline';
     }
 
-    //Importing the xpub and fingerprint
-    const selectMethod1 = document.getElementById('selectMethod1');
-    const xpubText1 = document.getElementById('xpub-text1');
-    const xpubButton1 = document.getElementById('xpub-button1');
-    const fingerprintElement1 = document.getElementById('fingerprint1');
-    const xpubElement1 = document.getElementById('xpub1');
-    const trezorInfo1 = document.getElementById('trezor-info1');
+    const walletform = document.getElementById('wallet-form');
 
-    selectMethod1.addEventListener('change', function() {
-        if (this.value === 'Trezor') {
-            xpubText1.style.display = 'none';
-            xpubButton1.textContent = 'Connect Trezor';
-        } else {
-            xpubText1.style.display = 'block';
-            xpubButton1.textContent = 'Import xPub';
-        }
-    });
+    if(walletform){
+        const selectMethod1 = document.getElementById('selectMethod1');
+        const xpubText1 = document.getElementById('xpub-text1');
+        const xpubButton1 = document.getElementById('xpub-button1');
+        const fingerprintElement1 = document.getElementById('fingerprint1');
+        const xpubElement1 = document.getElementById('xpub1');
+        const trezorInfo1 = document.getElementById('trezor-info1');
 
-    xpubButton1.addEventListener('click', function(event) {
-        event.preventDefault();
-        if (selectMethod1.value === 'Trezor') {
-            TrezorConnect.getPublicKey({
-                path: "m/48'/0'/0'/2'",
-                coin: "Bitcoin",
-            }).then(function(result) {
-                if (result.success) {
-                    const { xpub, fingerprint } = result.payload;
-                    xpubElement1.textContent = 'p2wsh xPub: ' + xpub;
-                    fingerprintElement1.textContent = 'p2wsh xPub' + fingerprint;
-                    trezorInfo1.style.display = 'block';
-                } else {
-                    alert('Failed to get specific xpub: ' + result.payload.error);
+        selectMethod1.addEventListener('change', function() {
+            if (this.value === 'Trezor') {
+                xpubText1.style.display = 'none';
+                xpubButton1.textContent = 'Connect Trezor';
+            } else {
+                xpubText1.style.display = 'block';
+                xpubButton1.textContent = 'Import xPub';
+            }
+        });
+
+        xpubButton1.addEventListener('click', function(event) {
+            event.preventDefault();
+            getxPubandFinger(selectMethod1, xpubElement1, fingerprintElement1, trezorInfo1, xpubText1);
+        });
+
+        function getxPubandFinger(selectMethod, xpubElement, fingerprintElement, trezorInfo, xpubText){
+            if (selectMethod.value === 'Trezor') {
+                TrezorConnect.getPublicKey({
+                    path: "m/48'/0'/0'/2'",
+                    coin: "Bitcoin",
+                }).then(function(result) {
+                    if (result.success) {
+                        const { xpub, fingerprint } = result.payload;
+                        xpubElement.textContent = 'p2wsh xPub: ' + xpub;
+                        fingerprintElement.textContent = 'p2wsh xPub' + fingerprint;
+                        trezorInfo.style.display = 'block';
+                    } else {
+                        alert('Failed to get specific xpub: ' + result.payload.error);
+                    }
+                }).catch(function(error) {
+                    alert('Error connecting to Trezor: ' + error.message);
+                });
+            } else {
+                // Handle the "From Text" method
+                const xpub = xpubText.value;
+                xpubElement.textContent = 'Imported xPub: ' + xpub;
+                try {
+                    const keyPair = bitcoinjs.bip32.fromBase58(xpub);
+                    const fingerprint = keyPair.fingerprint.toString('hex');
+                    fingerprintElement.textContent = 'Fingerprint: ' + fingerprint;
+                } catch (e) {
+                    document.getElementById('fingerprintResult').textContent = 'Invalid XPUB.';
                 }
-            }).catch(function(error) {
-                alert('Error connecting to Trezor: ' + error.message);
-            });
-        } else {
-            // Handle the "From Text" method
-            const xpub = xpubText1.value;
-            xpubElement1.textContent = 'Imported xPub: ' + xpub;
-            fingerprintElement1.textContent = '';  // Clear fingerprint as it may not apply
+            
+            }
         }
-    });
-
+    }
 });
 
 function toggleDropdown() {
